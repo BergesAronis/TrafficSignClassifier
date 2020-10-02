@@ -19,14 +19,14 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
+[image1]: ./examples/visualization.png "Visualization"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image4]: ./new_images/sign1.png "Traffic Sign 1"
+[image5]: ./new_images/sign2.png "Traffic Sign 2"
+[image6]: ./new_images/sign3.png "Traffic Sign 3"
+[image7]: ./new_images/sign4.png "Traffic Sign 4"
+[image8]: ./new_images/sign5.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -52,7 +52,7 @@ I did not use any library to determine the summary, we can use built in python f
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is an example of input from our dataset.
 
 ![alt text][image1]
 
@@ -62,7 +62,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 My preprocessing step is actually just a shuffle of the data. This is done to ensure that the order of the data is not affecting the learning.
 
-While my images are technically grayscaled and normalized, it's not done in the preprocessing step. I chose to include it in my actual pipeline instead. This made things easier for me.
+While my images are technically grayscaled and normalized, it's not done in the preprocessing step. I chose to include it in my actual pipeline instead. This made things easier for me. We perform normalization for multiple reasons. One being that it is more efficient for running our algorithm as everything is scaled between 0 and 1. Moreover it also makes it easy to take in new data s long as the new data is scaled in a similar way. We also gayscale images to ensure we only use useful information in our model. Color in this case is actually adding noise to our data. If we reduce this to grayscale, we can have our model focus on recognizing key shapes and compositions rather than fusing color into an already identifiable image.
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -108,6 +108,15 @@ We came to these results by using the initial LeNet architecture shown in the le
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 We chose 5 random signs from German roads.
+Here are the 5 images.
+
+One key point that may affect classification here are watermarks that slightly distort the composition of the images. Keeping on this point maintaining resolution and reducing blur will similarly ensure the actual shapes in the image remain un distorted and classifiable. Each image is resized to 32x32 to match our model
+
+![alt text][image4]
+![alt text][image5]
+![alt text][image6]
+![alt text][image7]
+![alt text][image8]
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
